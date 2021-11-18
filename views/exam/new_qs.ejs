@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>exam_code</title>
+    <!-- CSS-->
+    <link rel="stylesheet" href="/stylesheets/assets/bootstrap/css/font.css">
+    <link rel="stylesheet" href="/stylesheets/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/stylesheets/assets/css/form-elements.css">
+    <link rel="stylesheet" href="/stylesheets/assets/css/style.css">
+  </head>
+  <body>
+    <!-- Top content-->
+    <div class="top-content">
+      <div class="inner-bg">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 text">
+              <h1><strong>Add Question</strong></h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3"><a class="btn btn-info" href="/admin/home" role="button">Go Back!</a></div>
+            <div class="col-sm-6 form-box">
+              <div class="form-top">
+                <div class="form-top-left">
+                  <h3>Add new Question</h3>
+                </div>
+              </div>
+              <div class="form-bottom">
+                <form class="login-form" role="form" action="create_question" method="post">
+                  <div class="form-group">
+                    <label class="sr-only" for="form-question">Question</label>
+                    <input class="form-question form-control" id="form-question" type="text" name="question">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="form-optionA">Option A</label>
+                    <input class="form-optionA form-control" id="form-optionA" type="text" name="optionA">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="form-optionB">Option B</label>
+                    <input class="form-optionB form-control" id="form-optionB" type="text" name="optionB">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="form-optionC">Option C</label>
+                    <input class="form-optionC form-control" id="form-optionC" type="text" name="optionC">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="form-optionD">Option D</label>
+                    <input class="form-optionD form-control" id="form-optionD" type="text" name="optionD">
+                  </div>
+                  <div class="form-group">
+                    <p>Key</p>
+                    <label class="sr-only" for="form-key">Key</label>
+                    <select name="key">
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="form-exam_code">Exam Code</label>
+                    <input class="form-exam_code form-control" id="form-exam_code" type="hidden" name="exam_code">
+                  </div>
+                  <button class="btn" type="submit">Add</button>
+                </form>
+              </div>
+            </div>
+            <div class="col-sm-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Javascript-->
+    <script src="/stylesheets/assets/js/jquery-1.11.1.min.js"></script>
+    <script src="/stylesheets/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/stylesheets/assets/js/jquery.backstretch.min.js"></script>
+    <script src="/stylesheets/assets/js/scripts.js"></script>
+  </body>
+</html>

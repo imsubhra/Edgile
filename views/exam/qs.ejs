@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Edit Course</title>
+    <!-- CSS-->
+    <link rel="stylesheet" href="/stylesheets/assets/bootstrap/css/font.css">
+    <link rel="stylesheet" href="/stylesheets/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/stylesheets/assets/css/form-elements.css">
+    <link rel="stylesheet" href="/stylesheets/assets/css/style.css">
+  </head>
+  <body>
+    <!-- Top content-->
+    <div class="top-content">
+      <div class="inner-bg">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 text">
+              <h1><strong>Edit Course</strong></h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3"><a class="btn btn-info" href="/admin/home" role="button">Go Back!</a></div>
+            <div class="col-sm-6 form-box">
+              <div class="form-top">
+                <div class="form-top-left">
+                  <h3>Edit Course</h3>
+                  <p>Fill the form to add a new Course:</p>
+                </div>
+              </div>
+              <div class="form-bottom">
+                <form class="login-form" role="form" action="update" method="post">
+                  <div class="form-group">
+                    <label class="sr-only" for="form-name">CourseName</label>
+                    <input class="form-name form-control" id="form-name" type="text" name="coursename">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="form-courseid">courseid</label>
+                    <input class="form-courseid form-control" id="form-courseid" type="text" name="courseid">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="form-password">Previous</label>
+                    <input class="form-password form-control" id="form-password" type="hidden" name="">
+                  </div>
+                  <button class="btn" type="submit">Edit</button>
+                </form>
+              </div>
+            </div>
+            <div class="col-sm-3"><a class="btn btn-info" href="../admin/logout" role="button">Logout!</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Javascript-->
+    <script src="/stylesheets/assets/js/jquery-1.11.1.min.js"></script>
+    <script src="/stylesheets/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/stylesheets/assets/js/jquery.backstretch.min.js"></script>
+    <script src="/stylesheets/assets/js/scripts.js"></script>
+  </body>
+</html>
