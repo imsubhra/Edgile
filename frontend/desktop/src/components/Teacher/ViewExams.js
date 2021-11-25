@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import FacultyHeader from './FacultyHeader';
+import TeacherHeader from './TeacherHeader';
 import { Card, CardText, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import ClipLoader from "react-spinners/ClipLoader";
 import { Link } from 'react-router-dom';
@@ -31,7 +31,7 @@ class ViewExams extends Component {
 
         let self = this;
 
-        axios.post("http://localhost:3000/viewExam",{
+        axios.post("http://localhost:5000/viewExam",{
             user : email
         })
         .then((Data) => {
@@ -81,11 +81,11 @@ class ViewExams extends Component {
         return (
             <Fragment>
                 <div className="wrapper">
-                    <FacultyHeader />
+                    <TeacherHeader />
                     <div id="content">
                         <div className="row">
                             <Breadcrumb>
-                                <BreadcrumbItem><Link to="/faculty"><i className="fa fa-home fa-sm"></i> Dashboard</Link></BreadcrumbItem>
+                                <BreadcrumbItem><Link to="/teacher"><i className="fa fa-home fa-sm"></i> Dashboard</Link></BreadcrumbItem>
                                 <BreadcrumbItem active>All Exams</BreadcrumbItem>
                             </Breadcrumb>
                         </div>

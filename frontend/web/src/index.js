@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Route, Router, Switch } from 'react-router-dom';
-import signup from './signup';
+import signup from './reg';
 import logout from './logout';
 import admin from './admin';
 import error from './error';

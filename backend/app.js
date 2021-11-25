@@ -4,17 +4,9 @@ const morgan = require('morgan');
 const app = express();
 const bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-
 require("dotenv").config();
 
-const details = require('./models/schema');
-const registerRouter = require('./routes/webapp/register');
-const addUsersRouter = require('./routes/desktopApp/addUsers');
-const getUsersRouter = require('./routes/desktopApp/getUsers');
-const getOrgId = require('./routes/desktopApp/getOrgId');
-const createExam = require('./routes/desktopApp/createExam');
-const viewExam = require('./routes/desktopApp/viewExam');
-let port = 5000;
+const port = process.env.port;
 
 mongoose.connect(process.env.MONGODB_URL,{
 	useNewUrlParser:true,
@@ -23,8 +15,9 @@ mongoose.connect(process.env.MONGODB_URL,{
 }).then(()=>console.log('Connected to mongo server'))
 	.catch(err => console.error(err));
 
+  
 app.use(cors({
-    origin: 'http://localhost:5000',
+    origin: 'http://localhost:3000',
     // credentials: true,
     })
 );
@@ -34,19 +27,26 @@ app.use(bodyParser.json({limit: '10000mb' }));
 app.use(express.urlencoded({limit: '10000mb', extended: false }));
 app.use(express.json());
 
-app.use("/", registerRouter);
-app.use("/addUser",addUsersRouter);
-app.use("/getUsers", getUsersRouter);
+const regRouter = require('./routes/logup');
+const addRouter = require('./routes/users_add');
+const getRouter = require('./routes/users_get');
+const getOrgId = require('./routes/org_id_get');
+const create = require('./routes/create');
+const view = require('./routes/view');
+
+app.use("/", regRouter);
+app.use("/addUser",addRouter);
+app.use("/getUsers", getRouter);
 app.use("/getOrgId", getOrgId);
-app.use("/createExam", createExam);
-app.use("/viewExam", viewExam);
+app.use("/createExam", create);
+app.use("/viewExam", view);
 app.use((req, res, next) => {
     const error = new Error('Not Found');
     error.status = 404;
     next(error);
 })
 
-app.use((error, req, res, next) => {
+app.use((error,  res) => {
     res.status(error.status || 500);
     res.json({error:{
         message: error.message
@@ -55,4 +55,4 @@ app.use((error, req, res, next) => {
 
   
 
-app.listen(port, () => console.log("Started on port ", port));
+app.listen(port, () => console.log("Started on port ", port || 5000 ));

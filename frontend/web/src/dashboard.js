@@ -15,13 +15,8 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import HourglassEmptySharpIcon from '@material-ui/icons/HourglassEmptySharp';
 import DoneSharpIcon from '@material-ui/icons/DoneSharp';
 import CloseSharpIcon from '@material-ui/icons/CloseSharp';
@@ -201,7 +196,7 @@ export default class dashboard extends React.Component {
 
     acceptedReq = () => {
         this.handleDrawerClose();
-        Axios.get("http://localhost:3000/accepted")
+        Axios.get("http://localhost:5000/accepted")
             .then((res) => {
                 let values = res.data;
                 this.setState({
@@ -214,7 +209,7 @@ export default class dashboard extends React.Component {
 
     rejectedReq = () => {
         this.handleDrawerClose();
-        Axios.get("http://localhost:3000/rejected")
+        Axios.get("http://localhost:5000/rejected")
             .then((res) => {
                 let values = res.data;
                 this.setState({
@@ -227,7 +222,7 @@ export default class dashboard extends React.Component {
 
     pendingReq = () => {
         this.handleDrawerClose();
-        Axios.get('http://localhost:3000/dashboard')
+        Axios.get('http://localhost:5000/dashboard')
             .then((res) => {
                 let values = res.data;
                 let details = [];

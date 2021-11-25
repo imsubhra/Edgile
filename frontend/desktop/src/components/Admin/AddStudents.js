@@ -53,7 +53,7 @@ class AddStudent extends Component {
             });
         }
         var self = this;
-        axios.post('http://localhost:3000/addUser', {
+        axios.post('http://localhost:5000/addUser', {
             users: reqBody
         })
             .then(function (response) {
@@ -154,17 +154,18 @@ class AddStudent extends Component {
                             <div>
                                 <h2>Follows the steps to add students</h2>
                                 <p style={{ fontSize: 15 }}>
-                                    1. Download the sample excel file<br />
-                                    2. Edit the downloaded file as per the file formats<br />
-                                    3. Upload the final file<br />
-                                    4. Hit Generate Credentials<br />
-                                    5. Wait for sometime until all students credentials generated...<br />
+                                1.You can download the sample file or  upload the excel file as per the following format<br />
+                                2. Format<br/> 
+                                | # | First Name | Last Name | Organisation Email ID | <br/>
+                                3. Upload the final file<br />
+                                4. Click Generate Credentials<br />
+                                5. Wait for sometime until all admins credentials generated<br />
                                 </p>
                             </div>
                         </Jumbotron>
 
                         <ul className="list-unstyled CTAs">
-                        <li><a onClick={() => shell.openExternal("https://drive.google.com/file/d/1VG-S--EotQkm2LiuDMq8sc1wwk9XaOOo/view?usp=sharing")} className="article">Download sample document</a></li>
+                        <li><a onClick={() => shell.openExternal("https://docs.google.com/spreadsheets/d/1DmbBDP7RWIr9zDnW5ZRR2zJ9Ip1b1onM3Rmf4gNLbt8/edit?usp=sharing")} className="article">Download sample document</a></li>
                             <div style={{ borderStyle: 'dashed' }}><center><h3>Upload File</h3></center><input type="file" onChange={this.fileHandler.bind(this)} style={{ "padding": "10px" }} /></div>
                         </ul>
                         {displayUploadedData}

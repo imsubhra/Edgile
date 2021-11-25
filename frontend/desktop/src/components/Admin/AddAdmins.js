@@ -53,7 +53,7 @@ class AddAdmins extends Component {
             });
         }
         var self = this;
-        axios.post('http://localhost:3000/addUser', {
+        axios.post('http://localhost:5000/addUser', {
             users: reqBody
         })
             .then(function (response) {
@@ -147,25 +147,27 @@ class AddAdmins extends Component {
                         <div className="row">
                             <Breadcrumb>
                                 <BreadcrumbItem><Link to="/admin"><i className="fa fa-home fa-sm"></i> Dashboard</Link></BreadcrumbItem>
-                                <BreadcrumbItem active> Add Admins</BreadcrumbItem>
+                                <BreadcrumbItem active> Add Admin</BreadcrumbItem>
                             </Breadcrumb>
                             <hr />
                         </div>
                         <Jumbotron>
                             <div>
-                                <h2>Follows the steps to add admins</h2>
+                                <h2>Follows the steps to add admin</h2>
                                 <p style={{ fontSize: 15 }}>
-                                    1. Download the sample excel file<br />
+                                    1. Download the sample excel file given below<br />
+                                    2. Format<br/>
+                                    | # | First Name | Last Name | Organisational Email Id |<br/>
                                     2. Edit the downloaded file as per the file formats<br />
                                     3. Upload the final file<br />
-                                    4. Hit Genearte Credentials<br />
-                                    5. Wait for sometime until all admins credentials generated...<br />
+                                    4. Click Generate Credentials<br />
+                                    5. Wait for sometime until all admins credentials generated<br />
                                 </p>
                             </div>
                         </Jumbotron>
 
                         <ul className="list-unstyled CTAs">
-                            <li><a onClick={() => shell.openExternal("https://drive.google.com/file/d/1VG-S--EotQkm2LiuDMq8sc1wwk9XaOOo/view?usp=sharing")} className="article">Download sample document</a></li>
+                            <li><a onClick={() => shell.openExternal("https://docs.google.com/spreadsheets/d/12cXzQ68pz4UMBytoGVgapQPEY1ejYQ2cAZYEuGYssNc/edit?usp=sharing")} className="article">Download sample document</a></li>
                             <div style={{ borderStyle: 'dashed' }}><center><h3>Upload File</h3></center><input type="file" onChange={this.fileHandler.bind(this)} style={{ "padding": "10px" }} /></div>
                         </ul>
                         {displayUploadedData}

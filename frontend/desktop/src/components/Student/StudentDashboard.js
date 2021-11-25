@@ -23,7 +23,7 @@ class StudentDashboard extends Component {
                             <div>
                                 <h1>Welcome.. Student</h1>
                                 <p>
-                                    Student can give exams assigned by faculties.
+                                    Student can give exams assigned by Teachers.
                                 </p>
                             </div>
                         </Jumbotron>

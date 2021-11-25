@@ -33,7 +33,7 @@ class AdminDashboard extends Component {
                             <div>
                                 <h1>Welcome.. Admin</h1>
                                 <p>
-                                    Admin can add students, faculties and other admins.
+                                    Admin can add students, teachers and other admins.
                                 </p>
                             </div>
                         </Jumbotron>

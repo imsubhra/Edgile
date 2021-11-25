@@ -17,7 +17,7 @@ class DIsplayAdmins extends Component {
             loader: true
         });
         let self = this;
-        axios.get("http://localhost:3000/getUsers/admins")
+        axios.get("http://localhost:5000/getUsers/admins")
             .then((adminsData) => {
                 self.setState({
                     admins: adminsData.data.users,

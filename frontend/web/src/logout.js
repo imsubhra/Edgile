@@ -4,7 +4,7 @@ export default class logout extends React.Component {
     render(){
         return(
             <div>
-                <h1>Next logout Page Called</h1>
+                <h1>Logout</h1>
             </div>
         )
     }

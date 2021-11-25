@@ -18,7 +18,7 @@ class DisplayStudents extends Component {
             loader: true
         });
         let self = this;
-        axios.get("http://localhost:3000/getUsers/students")
+        axios.get("http://localhost:5000/getUsers/students")
             .then((studentsData) => {
                 self.setState({
                     students: studentsData.data.users,

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-let detailSchema = new Schema({
+const detailSchema = new Schema({
     firstname: {
         type: String,
         required: true
@@ -32,6 +32,6 @@ let detailSchema = new Schema({
     }
 });
 
-let details = mongoose.model('admindetail', detailSchema);
+const details = mongoose.model('admindetail', detailSchema);
 
 module.exports = details;

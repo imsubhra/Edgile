@@ -26,7 +26,7 @@ export default class ShowModalCase extends React.Component {
         }
         // alert("inside if")
         if (this.props.header === "Application Rejected") {
-            Axios.post("http://localhost:3000/rejection", { details })
+            Axios.post("http://localhost:5000/rejection", { details })
                 .then(res => {
                     alert(res.data.statusMessage);
                     this.setState({
@@ -38,7 +38,7 @@ export default class ShowModalCase extends React.Component {
                 })
         }
         else {
-            Axios.post("http://localhost:3000/confirmation", { details })
+            Axios.post("http://localhost:5000/confirmation", { details })
                 .then(res => {
                     alert(res.data.statusMessage);
                     this.setState({

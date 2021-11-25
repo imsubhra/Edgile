@@ -1,11 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { Jumbotron, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import { Stream } from 'stream';
 const shell = require('electron').shell;
 const axios = require('axios');
 import history from './history';
 require('electron-cookies');
-
 const path = require('path');
 const fs = require('fs');
 
@@ -39,7 +37,7 @@ class Home extends Component {
                 passwd: password1
             };
             
-            axios.post("http://localhost:3000/signin", {admin_users})
+            axios.post("http://localhost:5000/signin", {admin_users})
             .then((data) => {
                 if(data.data.role==="admin") {
                     document.cookie = 'email='+data.data.email;
@@ -51,13 +49,13 @@ class Home extends Component {
                     document.cookie = 'role='+data.data.role;
                     document.cookie = 'orgId='+data.data.orgId;
                     history.push("/student");
-                } else if(data.data.role==="faculty") {
+                } else if(data.data.role==="teacher") {
                     document.cookie = 'email='+data.data.email;
                     document.cookie = 'role='+data.data.role;
                     document.cookie = 'orgId='+data.data.orgId;
-                    history.push("/faculty");
+                    history.push("/teacher");
                 } else {
-                    alert("You are super admin use your web portal for login");
+                    alert("You are admin");
                 }
             })
             .catch((err) => {
@@ -76,12 +74,12 @@ class Home extends Component {
         return (
             <Fragment>
                 <Jumbotron>
-                    <h1 className="display-6">Welcome to Examination Room!</h1>
-                    <p className="lead">This is your virtual examination room.</p>
+                    <h1 className="display-6">Welcome to Centre of Examination!</h1>
+                    <p className="lead">This is your virtual exam centre</p>
                     <hr className="my-2" />
-                    <p>Login to continue ...</p>
+                    <p>If you are new</p>
                     <p className="lead">
-                        <Button color="primary" onClick={this.handleUrlRedirect('http://localhost:3000/')}>Learn More</Button>
+                        <Button color="primary" onClick={this.handleUrlRedirect('http://localhost:3000/')}>Go to this link to register your department</Button>
                     </p>
                 </Jumbotron>
                 <Form style={{ marginLeft: 200, marginRight: 200 }} onSubmit={this.handleSubmit}>

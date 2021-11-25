@@ -1,16 +1,16 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
-export default function FacultyHeader(props) {
+export default function TeacherHeader(props) {
     return (
         <Fragment>
             <nav id="sidebar">
                 <div className="sidebar-header">
-                    <h3>Faculty Dashboard</h3>
+                    <h3>Teacher Dashboard</h3>
                 </div>
                 <ul className="list-unstyled components">
-                    <li><Link to="/faculty/viewExam">View Created Exams</Link></li>
-                    <li><Link to="/faculty/createExam">Create Exam</Link></li>
+                    <li><Link to="/teacher/viewExam">View Created Exams</Link></li>
+                    <li><Link to="/teacher/createExam">Create Exam</Link></li>
                     <li><Link to="/home">Logout</Link></li>
                 </ul>
             </nav>

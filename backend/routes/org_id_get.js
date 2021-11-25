@@ -1,14 +1,10 @@
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const express = require('express');
-const user = require('../../models/userSchema');
-const path = require('path');
-const generator = require('generate-password');
+const user = require('../models/userSchema');
 const router = express.Router();
-const det = require('../../models/schema');
 router.use(bodyParser.json());
 
-var db = mongoose.connection;
 
 router.route("/")
     .post((req, res) => {
@@ -22,10 +18,10 @@ router.route("/")
             else {
                 if (someValue.length) {
                     console.log(someValue[0].orgId)
-                    res.status(200).json({code : 1, status: 'User found with email', orgId : someValue[0].orgId});
+                    res.status(200).json({code : 1, status: 'User found with emailid', orgId : someValue[0].orgId});
                 }
                 else {
-                    res.status(200).json({code : 2, status: 'No data with that email exist'});
+                    res.status(200).json({code : 2, status: 'No data with that emailid exist'});
                 }
             }
         });

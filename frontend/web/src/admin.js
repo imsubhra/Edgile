@@ -2,16 +2,15 @@ import React from 'react';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Axios from 'axios';
-import dashboard from './dashboard'
-import Cookies from 'js-cookie';
+
 
 
 export default class admin extends React.Component {
     constructor() {
         super();
         this.state = {
-            email: 'subhrasankhasarma1999@gmail.com',
-            passwd: 'Subhra1@',
+            email: "",
+            passwd: "",
         }
     }
 
@@ -30,9 +29,9 @@ export default class admin extends React.Component {
                     email: this.state.email,
                     passwd: this.state.passwd
                 };
-                Axios.post('http://localhost:3000/signin', { admin_users })
+                Axios.post('http://localhost:5000/signin', { admin_users })
                     .then(res => {                        
-                        if (res.data.role !== "super") {
+                        if (res.data.role != "super") {
                             alert("You are NOT ADMIN");
                         }
                         else {
@@ -40,18 +39,18 @@ export default class admin extends React.Component {
                             // Cookies.set(this.state.email, this.state.passwd, {expires: 1});
                             this.props.history.push('./dashboard')
                             this.state = {
-                                email: 'subhrasankhasarma1999@gmail.com',
-                                passwd: 'Subhra1@'
+                                email: "",
+                                passwd: ""
                             };
                             Array.from(document.querySelectorAll("input")).forEach(
-                                input => (input.value = '')
+                                input => (input.value = "")
                             );
                         }
 
 
                     })
                     .catch((err) => {
-                        alert(err.response.data.error);
+                        alert(err.response);
                     });
             }
             else {
@@ -66,7 +65,7 @@ export default class admin extends React.Component {
     render() {
         return (
             <div style={{ flex: 1 }}>
-                <Container style={{ border: '12vh', borderColor: 'black', borderWidth: '12vh' }}>
+                <Container style={{ border: '12vh', borderColor: '#EE82EE', borderWidth: '12vh' }}>
                     <h2>Admin Login</h2>
                     <Form onSubmit={this.handleSubmit}>
                         <FormGroup>
@@ -82,7 +81,7 @@ export default class admin extends React.Component {
                                 onChange={this.handleInputChange} />
                         </FormGroup>
 
-                        <Button type="submit" color="primary" >Login</Button>
+                        <Button type="submit" color="dark" >Login</Button>
                     </Form>
                 </Container>
             </div>

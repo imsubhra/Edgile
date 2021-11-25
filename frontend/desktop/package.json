@@ -1,8 +1,8 @@
 {
-    "name": "examination-room",
+    "name": "exam",
     "version": "0.1.0",
-    "description": "Start point for ElectronJS projects with ReactJS and Bootstrap.",
-    "main": "main.js",
+    "description": "",
+    "main": "app.js",
     "scripts": {
         "start": "electron .",
         "dev": "electron . --debug",
@@ -14,9 +14,10 @@
         "url": "git+https://github.com/unnamed-community/electron-reactstrap-boilerplate.git"
     },
     "keywords": [
-        "electron",
         "react",
         "bootstrap",
+        "electron",
+        
         "reactstrap"
     ],
     "author": {

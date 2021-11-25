@@ -1,14 +1,11 @@
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const express = require('express');
-const forms = require('../../models/forms');
-const path = require('path');
-const generator = require('generate-password');
+const forms = require('../models/forms');
+
 const router = express.Router();
 
 router.use(bodyParser.json());
 
-var db = mongoose.connection;
 
 router.route("/")
     .post((req, res) => {

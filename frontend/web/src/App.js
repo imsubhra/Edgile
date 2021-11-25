@@ -1,10 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Button } from '@material-ui/core';
-import { BrowserRouter, Link, NavLink } from 'react-router-dom';
-import signup from './signup';
-import logout from './logout'
+
 
 export default class App extends React.Component {
   onNavigateSignup = () => {
@@ -15,7 +12,7 @@ export default class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <h1>Edgile</h1>
-          <Button onClick={this.onNavigateSignup} variant="outlined" color="primary">
+          <Button onClick={this.onNavigateSignup} variant="outlined" color="dark">
             Register Your Department
           </Button>
         </header>

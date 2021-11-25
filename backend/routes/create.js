@@ -1,14 +1,10 @@
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const express = require('express');
-const forms = require('../../models/forms');
-const path = require('path');
-const generator = require('generate-password');
+const forms = require('../models/forms');
 const router = express.Router();
-const nodemailer = require('nodemailer');
 router.use(bodyParser.json());
 require("dotenv").config();
-var db = mongoose.connection;
 
 router.route("/")
     .post((req, res) => {
@@ -25,7 +21,7 @@ router.route("/")
                     console.log(err);
                 });
             }
-            res.status(200).json({"status" : "Exam created !"});
+            res.status(200).json({"status" : "Exam is created successfully!"});
         } catch(err) {
             res.status(500);
         }

@@ -1,19 +1,14 @@
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const fs = require('fs');
 const express = require('express');
-
-const det = require('../../models/schema');
-const user = require('../../models/userSchema');
-const Cookies = require('js-cookie');
+const det = require('../models/schema');
+const user = require('../models/userSchema');
 const nodemailer = require('nodemailer');
 const generator = require('generate-password');
 require("dotenv").config();
 const router = express.Router();
-
 router.use(bodyParser.json());
 
-var db = mongoose.connection;
 
 router.route("/signup")
     .post((req, res, next) => {
@@ -23,7 +18,7 @@ router.route("/signup")
             }
             else {
                 if (cnt) {
-                    res.status(422).json({ error: "Email Already Exist." });
+                    res.status(422).json({ error: "Email Already Exists" });
                 }
                 else {
                     const details = new det({
@@ -37,10 +32,10 @@ router.route("/signup")
                     det.create(details)
                         // details.save()
                         .then((detail) => {
-                            console.log("Details entered into Database");
+                            console.log("Details inserted into Database");
                             res.statusCode = 200;
                             res.setHeader('Content-Type', 'text/plain');
-                            res.json({ "statusMessage": "Details Has Been Sent To The Admin. Further Instructions Will Sent To Given Mail Id.." });
+                            res.json({ "statusMessage": "Details Has Been Sent to The Administrator. Check your mail to chech further details" });
                         })
                         .catch((err) => next(err));
                 }
@@ -62,10 +57,10 @@ router.route("/signin")
                     console.log(someValue[0].role)
                     res.statusCode = 200;
                     res.setHeader('Content-Type', 'application/json');
-                    res.json({ "statusMessage": "Login Successful", "role": someValue[0].role, "email": someValue[0].email, "orgId": someValue[0].orgId});
+                    res.json({ "statusMessage": "Login is Successful", "role": someValue[0].role, "email": someValue[0].email, "orgId": someValue[0].orgId});
                 }
                 else {
-                    res.status(401).send({ error: 'Incorrect Credentials' });
+                    res.status(401).send({ error: 'Credentials are wrong' });
                 }
             }
         })
@@ -81,7 +76,7 @@ router.route("/dashboard")
                 res.setHeader('Content-Type', 'application/json');
                 res.json(values);
             })
-            .catch((err) => res.status(503).send({ error: "Server Unable to Process Data" }));
+            .catch((err) => res.status(503).send({ error: "Unable to Process Data" }));
     });
 
 router.route("/accepted")
@@ -92,7 +87,7 @@ router.route("/accepted")
                 res.setHeader('Content-Type', 'application/json');
                 res.json(values);
             })
-            .catch((err) => res.status(503).send({ error: "Server Unable to Process Data" }));
+            .catch((err) => res.status(503).send({ error: "Unable to Process Data" }));
     });
 
 router.route("/rejected")
@@ -103,16 +98,15 @@ router.route("/rejected")
                 res.setHeader('Content-Type', 'application/json');
                 res.json(values);
             })
-            .catch((err) => res.status(503).send({ error: "Server Unable to Process Data" }));
+            .catch((err) => res.status(503).send({ error: "Unable to Process Data" }));
     });
 
 router.route("/confirmation")
     .post((req, res) => {
         let password = generator.generate({
-            length: 10,
+            length: 6,
             uppercase: true,
-            numbers: true,
-            symbols: true
+            numbers: true
         });
 
         det.find({ "email": { $in: [req.body.details.email] } })
@@ -143,7 +137,7 @@ router.route("/confirmation")
                                         from: 'subhrasankhasarma1999@gmail.com',
                                         to: req.body.details.email,
                                         subject: 'Application Accepted',
-                                        text: `Your Organization has been successfully registered with our service. Now you can create an exam paper with all sorts of functions which are avaiable with our system. Here is your temporary password ${password} & This is your Registered MailId from your Organization  ${req.body.details.email}`
+                                        text: `Your department has been successfully registered. Now you can use our application for conducting exam for students. Here is your password ${password} & This is your Registered E-Mail for your Department  ${req.body.details.email}`
                                     }
                                     transporter.sendMail(mailOptions, (err, info) => {
                                         if (err) {
@@ -173,11 +167,11 @@ router.route("/confirmation")
                                     res.status(500).send({error : "Server Side Error Occured !" })
                                 })
                         } else {
-                            res.status(200).json({ "statusMessage": "Organization with this email id already exists.." })
+                            res.status(200).json({ "statusMessage": "Email id already exists" })
                         }
                     });
             })
-            .catch(err => res.status(500).send({ error: "Server Side Error Occured !" }))
+            .catch(err => res.status(500).send({ error: "Server Error Occured !" }))
 
 
     });
@@ -188,32 +182,32 @@ router.route("/rejection")
             service: 'gmail',
             auth: {
                 user: 'subhrasankhasarma1999@gmail.com',
-                pass: process.env.password
+                pass: 'Subhra1@'
             }
         });
         let mailOptions = {
             from: 'subhrasankhasarma1999@gmail.com',
-            to: 'subhra_ug@ece.nits.ac.in',
+            to: req.body.details.email,
             subject: 'Application Rejected',
-            text: `Your application has been Rejected. It may be due to multiple user logins registered or may be due any incorrect documents submitted. For any further guidance mail us at subhrasankhasarma1999@gmail.com`
+            text: `Sorry, your application has been rejected. It may be due to multiple logins registered. For any further guidance mail us at subhrasankhasarma1999@gmail.com`
         }
         transporter.sendMail(mailOptions, (err, info) => {
             if (err) {
                 console.log(err);
                 res.statusCode = 502;
-                res.send({ error: "Mail Not Sent" });
+                res.send({ error: "Mail unable to sent" });
             }
             else {
                 det.findOneAndUpdate({ email: req.body.details.email }, { $set: { status: "rejected" } }, { new: true }, (error, doc) => {
                     if (error) {
                         res.statusCode = 501;
-                        res.send({ error: "Failed to Update DB" })
+                        res.send({ error: "Failed to Update database" })
                     }
                     else {
                         console.log('email sent ' + info.response)
                         res.statusCode = 200;
                         res.setHeader('Content-Type', 'text/plain');
-                        res.json({ "statusMessage": "Mail Sent Successfully" });
+                        res.json({ "statusMessage": "Mail successfully sent" });
                     }
                 })
 

@@ -30,43 +30,7 @@ class ViewExams extends Component {
         });
         win.loadURL(url);
 
-        let constraintObj = {
-            audio: true,
-            video: true
-        }
-        navigator.mediaDevices.getUserMedia(constraintObj)
-            .then(mediaStreamObj => {
-                let mediaRecorder = new MediaRecorder(mediaStreamObj);
-                let chunks = []
-                mediaRecorder.start();
-                mediaRecorder.ondataavailable = (ev) => {
-                    chunks.push(ev.data);
-                }
-                console.log(chunks);
-                win.on('closed', () => {   
-                    mediaRecorder.stop();
-                })
-                mediaRecorder.onstop = (ev) => {
-                    let blob = new Blob(chunks, { 'type': 'video/webm' });
-                    let reader = new FileReader();
-                    reader.onload = () => {
-                        let buffer = Buffer.from (reader.result);
-                        let fileName = new Date();
-                        
-                        fs.writeFile(fileName.toDateString()+".mp4", buffer, {}, (err, res) => {
-                            if (err) {
-                                console.log('error in saving')
-                            }
-                            else {
-                                console.log('video saved')
-                            }
-                        })
-                    }
-                    reader.readAsArrayBuffer(blob);
-                    chunks = [];
-                }
-
-            })
+ 
 
     }
     
@@ -90,7 +54,7 @@ class ViewExams extends Component {
 
         let self = this;
 
-        axios.post("http://localhost:3000/viewExam",{
+        axios.post("http://localhost:5000/viewExam",{
             user : email
         })
         .then((Data) => {
@@ -144,7 +108,7 @@ class ViewExams extends Component {
                     <div id="content">
                         <div className="row">
                             <Breadcrumb>
-                                <BreadcrumbItem><Link to="/faculty"><i className="fa fa-home fa-sm"></i> Dashboard</Link></BreadcrumbItem>
+                                <BreadcrumbItem><Link to="/teacher"><i className="fa fa-home fa-sm"></i> Dashboard</Link></BreadcrumbItem>
                                 <BreadcrumbItem active>All Exams</BreadcrumbItem>
                             </Breadcrumb>
                         </div>

@@ -1,22 +1,16 @@
 import Axios from 'axios';
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
+
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-// import { Button, Col, Container, Form, FormGroup, Input, Label, Row } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import dashboard from './dashboard';
-import { Input } from '@material-ui/core';
+
 
 export default class signup extends React.Component {
 
@@ -31,10 +25,10 @@ export default class signup extends React.Component {
             },
             avatar: {
                 margin: theme.spacing(1),
-                backgroundColor: theme.palette.secondary.main,
+                backgroundColor: theme.palette.secondary.dark,
             },
             form: {
-                width: '100%', // Fix IE 11 issue.
+                width: '100%', 
                 marginTop: theme.spacing(3),
             },
             submit: {
@@ -42,14 +36,12 @@ export default class signup extends React.Component {
             },
         }));
         this.state = {
-            firstname: '',
-            lastname: '',
-            email: '',
-           
-            
-            university: '',
-            designation: '',
-            classes: useStyles,
+            firstname:"",
+            lastname:"",
+            email:"",            
+            university:"",
+            designation:"",
+            classes: useStyles
         }
     }
 
@@ -57,8 +49,8 @@ export default class signup extends React.Component {
 
         event.preventDefault();
 
-        if ((this.state.firstname === '') || (this.state.lastname === '') || (this.state.email === '')  || (this.state.university === '') || (this.state.designation === '')) {
-            alert("Enter All Details.. ");
+        if ((this.state.firstname === "") || (this.state.lastname === "") || (this.state.email === "")  || (this.state.university === "") || (this.state.designation === "")) {
+            alert("Enter All Details ");
         }
         else {
             if (/^([\w\d](\.)*)+\@([\w\.]{1,2})+(\w)$/.test(this.state.email) && (this.state.firstname.length >= 3) && (this.state.lastname.length >= 3) && (this.state.university.length >= 3) && (this.state.designation.length >= 2)) {
@@ -72,26 +64,24 @@ export default class signup extends React.Component {
                 }
                 // console.log(details)
 
-                Axios.post("http://localhost:3000/signup", { details })
+                Axios.post("http://localhost:5000/signup", { details })
                     .then(res => {
                         alert(res.data.statusMessage);
                         this.setState({
-                            firstname: '',
-                            lastname: '',
-                            email: '',
-                            
-                            university: '',
-                            designation: '',
+                            firstname:"",
+                            lastname:"",
+                            email:"",            
+                            university:"",
+                            designation:"",
                         });
                         Array.from(document.querySelectorAll("input")).forEach(
-                            input => (input.value = '')
+                            input => (input.value = "")
                         );
 
 
                     })
                     .catch((err) => {
-                        alert(err.response.data.error);
-                        // console.log(err.data.statusMessage, "Inside Catch");
+                        alert(err.response);
                     });
             }
             else {
@@ -133,7 +123,7 @@ export default class signup extends React.Component {
                                         variant="outlined"
                                         required
                                         fullWidth
-                                        label="First Name"
+                                        label="Firstname"
                                         autoFocus
                                         onChange={this.handleInputChange}
                                     />
@@ -143,7 +133,7 @@ export default class signup extends React.Component {
                                         variant="outlined"
                                         required
                                         fullWidth
-                                        label="Last Name"
+                                        label="Lastname"
                                         name="lastname"
                                         autoComplete="lname"
                                         onChange={this.handleInputChange}
@@ -166,7 +156,7 @@ export default class signup extends React.Component {
                                         required
                                         fullWidth
                                         name="university"
-                                        label="University"
+                                        label="Department"
                                         autoComplete="university"
                                         onChange={this.handleInputChange}
                                     />
@@ -188,9 +178,9 @@ export default class signup extends React.Component {
                                 type="submit"
                                 fullWidth
                                 variant="contained"
-                                color="primary"
+                                color="secondary"
                                 className={this.state.classes.submit}
-                                style={{marginTop: '4%'}}
+                                style={{marginTop: '8%'}}
                             >
                                 Register 
                             </Button>

@@ -1,20 +1,18 @@
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const express = require('express');
-const user = require('../../models/userSchema');
-const forms = require('../../models/forms')
-const path = require('path');
+const user = require('../models/userSchema');
+const forms = require('../models/forms')
 const generator = require('generate-password');
 const router = express.Router();
 const nodemailer = require('nodemailer');
 router.use(bodyParser.json());
 require("dotenv").config();
-var db = mongoose.connection;
 router.route("/")
     .post((req, res) => {
         let body = req.body.users;
         var passwords = generator.generateMultiple(body.length, {
-            length: 10,
+            length: 6,
             uppercase: true,
             numbers: true,
         });
@@ -61,7 +59,7 @@ router.route("/")
                         let transporter = nodemailer.createTransport({
                             service: 'gmail',
                             auth: {
-                                user: 'subhrasankhasarma1999@.com',
+                                user: 'subhrasankhasarma1999@gmail.com',
                                 pass: process.env.password
                             }
                         });
@@ -69,8 +67,8 @@ router.route("/")
                         let mailOptions = {
                             from: 'subhrasankhasarma1999@gmail.com',
                             to: toEmail,
-                            subject: 'Your password',
-                            text: `Your Organization has been successfully registered with our service. Here is your temporary password ${pwd} & This is your Registered MailId from your Organization  ${toEmail}`
+                            subject: 'Edgile',
+                            text: `You has been successfully registered by your HOD. Here is your password ${pwd} & This is your Registered E-Mail  ${toEmail}`
                         }
                         transporter.sendMail(mailOptions, (err, info) => {
                             if (err) {

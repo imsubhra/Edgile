@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import FacultyHeader from './FacultyHeader';
+import TeacherHeader from './TeacherHeader';
 import { Breadcrumb, BreadcrumbItem, Jumbotron, Table, Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import ClipLoader from "react-spinners/ClipLoader";
 import { Link } from 'react-router-dom';
@@ -67,7 +67,7 @@ class CreateExam extends Component {
                 });
             }
             var self = this;
-            axios.post('http://localhost:3000/createExam', {
+            axios.post('http://localhost:5000/createExam', {
                 users: reqBody
             })
             .then(function (response) {
@@ -137,7 +137,6 @@ class CreateExam extends Component {
                             {data}
                         </tbody>
                     </Table>
-                    {/* <Button  onClick={() => this.createExam()} size="lg">Create Exam</Button>{' '} */}
                     
                     <FormGroup>
                         <Label for="formLink">Form Link</Label>
@@ -152,7 +151,7 @@ class CreateExam extends Component {
                         <Input type="date" name="examDate" id="examDate" placeholder="exam date" required/>
                     </FormGroup>
                     <FormGroup>
-                        <Label for="duration">Duration</Label>
+                        <Label for="duration">Duration(in minutes)</Label>
                         <Input type="number" step="0.01" name="duration" id="duration" placeholder="duration" required/>
                     </FormGroup>
                     <FormGroup>
@@ -177,11 +176,11 @@ class CreateExam extends Component {
         return (
             <Fragment>
                 <div className="wrapper">
-                    <FacultyHeader />
+                    <TeacherHeader />
                     <div id="content">
                         <div className="row">
                             <Breadcrumb>
-                                <BreadcrumbItem><Link to="/faculty"><i className="fa fa-home fa-sm"></i> Dashboard</Link></BreadcrumbItem>
+                                <BreadcrumbItem><Link to="/teacher"><i className="fa fa-home fa-sm"></i> Dashboard</Link></BreadcrumbItem>
                                 <BreadcrumbItem active> Create Exam</BreadcrumbItem>
                             </Breadcrumb>
                             <hr />
@@ -191,18 +190,19 @@ class CreateExam extends Component {
                                 <h2>Follows the steps to create exam</h2>
                                 <p style={{ fontSize: 15 }}>
                                     1. Download the sample excel file<br />
-                                    2. Edit the downloaded file as per the file formats<br />
-                                    3. Upload the final file<br />
-                                    4. Create a google form <a onClick={() => shell.openExternal("http://forms.google.com/")} className="article"> CLICK HERE</a><br />
+                                    2. Format is-<br/>
+                                    | # | Email |<br/> 
+                                    3. Edit the downloaded file as per the file formats<br />
+                                    3. Upload the final excel file<br />
+                                    4. Create a google form <a onClick={() => shell.openExternal("https://docs.google.com/forms/")} className="article"> Click Here</a><br />
                                     5. Add the form link below<br />
-                                    6. Hit Genearte Exam<br />
-                                    7. Wait for sometime until exam created...<br />
+                                    6. Hit Generate Exam<br />
                                 </p>
                             </div>
                         </Jumbotron>
 
                         <ul className="list-unstyled CTAs">
-                            <li><a onClick={() => shell.openExternal("https://drive.google.com/file/d/1fZ1VETvLAPYCLwkAH4Gtv6Na8-1KGtfN/view?usp=sharing")} className="article">Download sample document</a></li>
+                            <li><a onClick={() => shell.openExternal("https://docs.google.com/spreadsheets/d/1dFcNTn9slHizqR3gzMnjIONGGXUiayKCmPkXWAzLfpE/edit?usp=sharing")} className="article">Download sample document</a></li>
                             <div style={{ borderStyle: 'dashed' }}><center><h3>Upload File</h3></center><input type="file" onChange={this.fileHandler.bind(this)} style={{ "padding": "10px" }} /></div>
                         </ul>
                         {displayUploadedData}
