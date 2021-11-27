@@ -33,7 +33,7 @@
  4. ADMIN DASHBOARD(to approve DEPARTMENT ADMINS registration and view all details of DEPARTMENT ADMINS)
  ![Screenshot (618)](https://user-images.githubusercontent.com/51112668/143490241-6406bbac-4422-4040-850d-3c1e3f631485.png)
 
- ### DESKTOP APPLICATION 
+### DESKTOP APPLICATION 
 
  5. EXAMINATION PORTAL SIGNIN PAGE FOR DEPARTMENT ADMINS,Teachers and Students.
  ![Screenshot (602)](https://user-images.githubusercontent.com/51112668/143488042-554fbd2c-f28a-4c97-b4f9-0aad571b6edd.png)
@@ -74,25 +74,9 @@
 
 ## TECH STACK
 
-### FRONTEND
-<p align="left"> 
-1.<a href="https://reactjs.org/" target="_blank"><img src="https://miro.medium.com/max/1400/1*CeuWv9fCjD1uTiTuKytnBQ.png" alt="react" width="40" height="40"/> </a> React &nbsp 
-2.<a href="https://www.electronjs.org/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Electron_Software_Framework_Logo.svg/1200px-Electron_Software_Framework_Logo.svg.png" alt="html5" width="40" height="40"/> </a> &nbsp Electron &nbsp 
-3. <a href="https://www.w3.org/html/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> HTML &nbsp 
-4.<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> JavaScript &nbsp 
-5. <a href="https://www.w3schools.com/css/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> CSS &nbsp 
-6. <a href="https://getbootstrap.com" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg" alt="bootstrap" width="40" height="40"/> </a>Bootstrap
-</p>  
-  
-### BACKEND
+![Screenshot (624)](https://user-images.githubusercontent.com/51112668/143719204-27679aad-8f9f-400b-8226-19c1a825a8af.png)
 
-<p align="left">
-1.<a href="https://expressjs.com" target="_blank"> <img src="https://miro.medium.com/max/1400/1*XP-mZOrIqX7OsFInN2ngRQ.png" alt="express" width="40" height="40"/> </a> Express.js &nbsp
-2.<a href="https://nodejs.org" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a> Node.js &nbsp
-3.<a href="https://www.mongodb.com/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="40" height="40"/> </a> MongoDB  
-</p>
-
-  ## INSTRUCTIONS
+## INSTRUCTIONS
   1. Clone the repo by `git clone https://github.com/imsubhra/Edgile.git`
   2. Type `cd backend` in terminal.
   3. Run `npm install` and after that `npm install yarn` in the terminal to install all related dependencies.
