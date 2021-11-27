@@ -12,7 +12,8 @@ router.route("/")
         let body = req.body.users;
         var passwords = generator.generateMultiple(body.length, {
             length: 6,
-            uppercase: true,
+            lowercase:true,
+            uppercase: false,
             numbers: true,
         });
         let queryData  = [];
@@ -61,13 +62,13 @@ router.route("/")
 
 
                             auth: {
-                                user: process.env.email,
+                                user: process.env.emailid,
                                 pass: process.env.password
                             }
                         });
 
                         let mailOptions = {
-                            from: 'imsubhranasaastronaut@gmail.com',
+                            from: process.env.emailid,
                             to: toEmail,
                             subject: 'Edgile',
                             text: `You has been successfully registered by your Department Admin. Here is your password ${pwd} & This is your Registered E-Mail  ${toEmail}`

@@ -34,7 +34,7 @@ router.route("/signup")
                             console.log("Details inserted into Database");
                             res.statusCode = 200;
                             res.setHeader('Content-Type', 'text/plain');
-                            res.json({ "statusMessage": "Details Has Been Sent to The Administrator. Check your mail to get further details" });
+                            res.json({ "statusMessage": "Details Has Been Sent to The Administrator. Check your mail to get further details after approval from admin" });
                         })
                         .catch((err) => next(err));
                 }
@@ -104,8 +104,9 @@ router.route("/confirmation")
     .post((req, res) => {
         let password = generator.generate({
             length: 6,
-            lowercase: true,
-            numbers: true
+            lowercase:true,
+            uppercase: false,
+            numbers: true,
         });
 
         reg.find({ "email": { $in: [req.body.details.email] } })
@@ -131,12 +132,12 @@ router.route("/confirmation")
 
 
                                         auth: {
-                                            user: process.env.email,
+                                            user: process.env.emailid,
                                             pass: process.env.password
                                         }
                                     });
                                     let mailOptions = {
-                                        from: 'imsubhranasaastronaut@gmail.com',
+                                        from: process.env.emailid,
                                         to: req.body.details.email,
                                         subject: 'Application Accepted',
                                         text: `Your department has been successfully registered. Now you can use our application for conducting exam for students. Here is your password ${password} & This is your Registered E-Mail for your Department  ${req.body.details.email}`
@@ -151,7 +152,7 @@ router.route("/confirmation")
                                             reg.findOneAndUpdate({ email: req.body.details.email }, { $set: { status: "accepted" } }, { new: true }, (error, doc) => {
                                                 if (error) {
                                                     res.statusCode = 501;
-                                                    res.send({ error: "Failed to Update DB" })
+                                                    res.send({ error: "Database updatiom failed" })
                                                 }
                                                 else {
                                                     console.log('email sent ' + info.response)
@@ -186,12 +187,12 @@ router.route("/rejection")
 
 
             auth: {
-                user: process.env.email,
+                user: process.env.emailid,
                 pass: process.env.password
             }
         });
         let mailOptions = {
-            from: 'imsubhranasaastronaut@gmail.com',
+            from: process.env.emailid,
             to: req.body.details.email,
             subject: 'Application Rejected',
             text: `Sorry, your application has been rejected. It may be due to multiple logins registered. For any further guidance mail us at imsubhranasaastronaut@gmail.com`

@@ -67,7 +67,7 @@ class DIsplayAdmins extends Component {
                         <div className="row">
                             <Breadcrumb>
                                 <BreadcrumbItem><Link to="/admin"><i className="fa fa-home fa-sm"></i> Dashboard</Link></BreadcrumbItem>
-                                <BreadcrumbItem active>Display Admins</BreadcrumbItem>
+                                <BreadcrumbItem active>Display Other Dept. Admins</BreadcrumbItem>
                             </Breadcrumb>
                         </div>
                         <ClipLoader

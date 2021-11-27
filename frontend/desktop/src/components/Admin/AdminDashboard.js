@@ -22,18 +22,18 @@ class AdminDashboard extends Component {
                         <div className="row">
                             <Breadcrumb>
                                 <BreadcrumbItem><Link to="/home"><i className="fa fa-home fa-sm"></i> Home</Link></BreadcrumbItem>
-                                <BreadcrumbItem active> Admin</BreadcrumbItem>
+                                <BreadcrumbItem active> Departmental Admin</BreadcrumbItem>
                             </Breadcrumb>
                             <div className="col-12">
-                                <h3>Admin Dashboard</h3>
+                                <h3>Departmental Admin Dashboard</h3>
                                 <hr />
                             </div>
                         </div>
                         <Jumbotron>
                             <div>
-                                <h1>Welcome.. Admin</h1>
+                                <h1>Welcome.. Departmental Admin</h1>
                                 <p>
-                                    Admin can add students, teachers and other admins.
+                                Departmental Admin can add Students, Teachers and other Departmental Admins.
                                 </p>
                             </div>
                         </Jumbotron>

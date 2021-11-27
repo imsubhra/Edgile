@@ -147,13 +147,13 @@ class AddAdmins extends Component {
                         <div className="row">
                             <Breadcrumb>
                                 <BreadcrumbItem><Link to="/admin"><i className="fa fa-home fa-sm"></i> Dashboard</Link></BreadcrumbItem>
-                                <BreadcrumbItem active> Add Admin</BreadcrumbItem>
+                                <BreadcrumbItem active> Add Other Dept. Admin</BreadcrumbItem>
                             </Breadcrumb>
                             <hr />
                         </div>
                         <Jumbotron>
                             <div>
-                                <h2>Follows the steps to add admin</h2>
+                                <h2>Follows the steps to add Other Dept. Admin</h2>
                                 <p style={{ fontSize: 15 }}>
                                     1. Download the sample excel file given below<br />
                                     2. Format<br/>

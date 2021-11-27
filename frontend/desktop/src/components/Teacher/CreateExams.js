@@ -47,7 +47,7 @@ class CreateExam extends Component {
         if(!formURL || !sbj || !date || !dur) {
             alert("Please enter the exam data correctly !");
         } else {
-            alert("success");
+            alert("Exam has been created successfully");
             this.setState({
                 showSpinner: true,
                 showMessage: "none",
