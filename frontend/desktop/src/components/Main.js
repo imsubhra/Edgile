@@ -10,7 +10,6 @@ import TeacherCreateExam from './Teacher/CreateExams';
 import DisplayTeachers from './Admin/DisplayTeachers';
 import DisplayStudents from './Admin/DisplayStudents';
 import DisplayAdmins from './Admin/DisplayAdmins';
-import TeacherViewExam from './Teacher/ViewExams';
 import StudentViewExam from './Student/ViewExam';
 import TeacherDashboard from './Teacher/TeacherDashboard';
 import StudentDashboard from './Student/StudentDashboard';
@@ -38,7 +37,6 @@ class Main extends Component {
                         <Route exact path="/admin/display/teachers" component={() => <DisplayTeachers />}></Route>
                         <Route exact path="/admin/display/students" component={() => <DisplayStudents />}></Route>
                         <Route exact path="/teacher/createExam" component={() => <TeacherCreateExam />}></Route>
-                        <Route exact path="/teacher/viewExam" component={() => <TeacherViewExam />}></Route>
                         <Route exact path="/student/viewExam" component={() => <StudentViewExam />}></Route>
                         <Route exact path="/*" component={() => <Home />}></Route>
                     </Switch>

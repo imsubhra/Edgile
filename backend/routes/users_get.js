@@ -1,15 +1,13 @@
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const express = require('express');
-const user = require('../models/userSchema');
-
+const user = require('../models/users');
 const router = express.Router();
+
 
 router.use(bodyParser.json());
 
-
-router.route("/teachers")
-    .get((req, res) => {
+//ROUTE FOR FETCHING TEACHERS DETAILS
+router.route("/teachers").get((req, res) => {
         let query = user.find({"role" : "teacher"});
         query.exec((err,data) => {
             if(err) {
@@ -19,8 +17,9 @@ router.route("/teachers")
             }
         })
     });
-router.route("/students")
-.get((req, res) => {
+
+//ROUTE FOR FETCHING STUDENTS DETAILS    
+router.route("/students").get((req, res) => {
     let query = user.find({"role" : "student"});
     query.exec((err,data) => {
         if(err) {
@@ -30,8 +29,9 @@ router.route("/students")
         }
     })
 });
-router.route("/admins")
-    .get((req, res) => {
+
+//ROUTE FOR FETCHING DEPARTMENT ADMINS DETAILS
+router.route("/admins").get((req, res) => {
         let query = user.find({"role" : "admin"});
         query.exec((err,data) => {
             if(err) {

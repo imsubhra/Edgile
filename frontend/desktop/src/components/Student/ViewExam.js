@@ -1,9 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import StudentHeader from './StudentHeader';
-import { Card, CardText, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Card, CardText, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import ClipLoader from "react-spinners/ClipLoader";
 import { Link } from 'react-router-dom';
-const fs = require("fs");
 const axios = require('axios');
 
 
@@ -108,7 +107,7 @@ class ViewExams extends Component {
                     <div id="content">
                         <div className="row">
                             <Breadcrumb>
-                                <BreadcrumbItem><Link to="/teacher"><i className="fa fa-home fa-sm"></i> Dashboard</Link></BreadcrumbItem>
+                                <BreadcrumbItem><Link to="/student"><i className="fa fa-home fa-sm"></i> Dashboard</Link></BreadcrumbItem>
                                 <BreadcrumbItem active>All Exams</BreadcrumbItem>
                             </Breadcrumb>
                         </div>

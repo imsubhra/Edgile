@@ -1,7 +1,6 @@
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const express = require('express');
-const user = require('../models/userSchema');
+const user = require('../models/users');
 const forms = require('../models/forms')
 const generator = require('generate-password');
 const router = express.Router();
@@ -58,17 +57,20 @@ router.route("/")
 
                         let transporter = nodemailer.createTransport({
                             service: 'gmail',
+                            secure: false, port: 587, tls: { rejectUnauthorized: false },
+
+
                             auth: {
-                                user: 'subhrasankhasarma1999@gmail.com',
+                                user: process.env.email,
                                 pass: process.env.password
                             }
                         });
 
                         let mailOptions = {
-                            from: 'subhrasankhasarma1999@gmail.com',
+                            from: 'imsubhranasaastronaut@gmail.com',
                             to: toEmail,
                             subject: 'Edgile',
-                            text: `You has been successfully registered by your HOD. Here is your password ${pwd} & This is your Registered E-Mail  ${toEmail}`
+                            text: `You has been successfully registered by your Department Admin. Here is your password ${pwd} & This is your Registered E-Mail  ${toEmail}`
                         }
                         transporter.sendMail(mailOptions, (err, info) => {
                             if (err) {

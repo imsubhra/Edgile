@@ -6,6 +6,7 @@ const router = express.Router();
 router.use(bodyParser.json());
 require("dotenv").config();
 
+//ROUTE FOR CREATING EXAM BY TEACHERS
 router.route("/")
     .post((req, res) => {
         let body = req.body.users;

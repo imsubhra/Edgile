@@ -9,7 +9,6 @@ export default function TeacherHeader(props) {
                     <h3>Teacher Dashboard</h3>
                 </div>
                 <ul className="list-unstyled components">
-                    <li><Link to="/teacher/viewExam">View Created Exams</Link></li>
                     <li><Link to="/teacher/createExam">Create Exam</Link></li>
                     <li><Link to="/home">Logout</Link></li>
                 </ul>

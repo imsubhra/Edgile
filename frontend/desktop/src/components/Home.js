@@ -77,7 +77,7 @@ class Home extends Component {
                     <h1 className="display-6">Welcome to Centre of Examination!</h1>
                     <p className="lead">This is your virtual exam centre</p>
                     <hr className="my-2" />
-                    <p>If you are new</p>
+                    <p>If your department is not signed up</p>
                     <p className="lead">
                         <Button color="primary" onClick={this.handleUrlRedirect('http://localhost:3000/')}>Go to this link to register your department</Button>
                     </p>

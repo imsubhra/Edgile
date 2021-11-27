@@ -1,8 +1,7 @@
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const express = require('express');
-const det = require('../models/schema');
-const user = require('../models/userSchema');
+const reg = require('../models/reg');
+const user = require('../models/users');
 const nodemailer = require('nodemailer');
 const generator = require('generate-password');
 require("dotenv").config();
@@ -12,7 +11,7 @@ router.use(bodyParser.json());
 
 router.route("/signup")
     .post((req, res, next) => {
-        det.countDocuments({ email: req.body.details.email }, (err, cnt) => {
+        reg.countDocuments({ email: req.body.details.email }, (err, cnt) => {
             if (err) {
                 console.log(err);
             }
@@ -21,7 +20,7 @@ router.route("/signup")
                     res.status(422).json({ error: "Email Already Exists" });
                 }
                 else {
-                    const details = new det({
+                    const details = new reg({
                         firstname: req.body.details.firstname,
                         lastname: req.body.details.lastname,
                         email: req.body.details.email,
@@ -29,13 +28,13 @@ router.route("/signup")
                         designation: req.body.details.designation
                        
                     });
-                    det.create(details)
+                    reg.create(details)
                         // details.save()
                         .then((detail) => {
                             console.log("Details inserted into Database");
                             res.statusCode = 200;
                             res.setHeader('Content-Type', 'text/plain');
-                            res.json({ "statusMessage": "Details Has Been Sent to The Administrator. Check your mail to chech further details" });
+                            res.json({ "statusMessage": "Details Has Been Sent to The Administrator. Check your mail to get further details" });
                         })
                         .catch((err) => next(err));
                 }
@@ -70,7 +69,7 @@ router.route("/dashboard")
     .get((req, res) => {
         // let cookie = Cookies.get()
         // console.log(cookie)
-        det.find({ "status": "pending" })
+        reg.find({ "status": "pending" })
             .then((values) => {
                 res.statusCode = 200;
                 res.setHeader('Content-Type', 'application/json');
@@ -81,7 +80,7 @@ router.route("/dashboard")
 
 router.route("/accepted")
     .get((req, res) => {
-        det.find({ "status": "accepted" })
+        reg.find({ "status": "accepted" })
             .then((values) => {
                 res.statusCode = 200;
                 res.setHeader('Content-Type', 'application/json');
@@ -92,7 +91,7 @@ router.route("/accepted")
 
 router.route("/rejected")
     .get((req, res) => {
-        det.find({ "status": "rejected" })
+        reg.find({ "status": "rejected" })
             .then((values) => {
                 res.statusCode = 200;
                 res.setHeader('Content-Type', 'application/json');
@@ -105,11 +104,11 @@ router.route("/confirmation")
     .post((req, res) => {
         let password = generator.generate({
             length: 6,
-            uppercase: true,
+            lowercase: true,
             numbers: true
         });
 
-        det.find({ "email": { $in: [req.body.details.email] } })
+        reg.find({ "email": { $in: [req.body.details.email] } })
             .then(data => {
                 console.log(data[0]._id)
                 user.collection.find({ "email": { $in: [req.body.details.email] } }).count()
@@ -128,13 +127,16 @@ router.route("/confirmation")
                                     console.log("success");
                                     let transporter = nodemailer.createTransport({
                                         service: 'gmail',
+                                        secure: false, port: 587, tls: { rejectUnauthorized: false },
+
+
                                         auth: {
-                                            user: 'subhrasankhasarma1999@gmail.com',
+                                            user: process.env.email,
                                             pass: process.env.password
                                         }
                                     });
                                     let mailOptions = {
-                                        from: 'subhrasankhasarma1999@gmail.com',
+                                        from: 'imsubhranasaastronaut@gmail.com',
                                         to: req.body.details.email,
                                         subject: 'Application Accepted',
                                         text: `Your department has been successfully registered. Now you can use our application for conducting exam for students. Here is your password ${password} & This is your Registered E-Mail for your Department  ${req.body.details.email}`
@@ -146,7 +148,7 @@ router.route("/confirmation")
                                             res.send({ error: "Mail Not Sent" });
                                         }
                                         else {
-                                            det.findOneAndUpdate({ email: req.body.details.email }, { $set: { status: "accepted" } }, { new: true }, (error, doc) => {
+                                            reg.findOneAndUpdate({ email: req.body.details.email }, { $set: { status: "accepted" } }, { new: true }, (error, doc) => {
                                                 if (error) {
                                                     res.statusCode = 501;
                                                     res.send({ error: "Failed to Update DB" })
@@ -180,16 +182,19 @@ router.route("/rejection")
     .post((req, res) => {
         let transporter = nodemailer.createTransport({
             service: 'gmail',
+            secure: false, port: 587, tls: { rejectUnauthorized: false },
+
+
             auth: {
-                user: 'subhrasankhasarma1999@gmail.com',
-                pass: 'Subhra1@'
+                user: process.env.email,
+                pass: process.env.password
             }
         });
         let mailOptions = {
-            from: 'subhrasankhasarma1999@gmail.com',
+            from: 'imsubhranasaastronaut@gmail.com',
             to: req.body.details.email,
             subject: 'Application Rejected',
-            text: `Sorry, your application has been rejected. It may be due to multiple logins registered. For any further guidance mail us at subhrasankhasarma1999@gmail.com`
+            text: `Sorry, your application has been rejected. It may be due to multiple logins registered. For any further guidance mail us at imsubhranasaastronaut@gmail.com`
         }
         transporter.sendMail(mailOptions, (err, info) => {
             if (err) {
@@ -198,7 +203,7 @@ router.route("/rejection")
                 res.send({ error: "Mail unable to sent" });
             }
             else {
-                det.findOneAndUpdate({ email: req.body.details.email }, { $set: { status: "rejected" } }, { new: true }, (error, doc) => {
+                reg.findOneAndUpdate({ email: req.body.details.email }, { $set: { status: "rejected" } }, { new: true }, (error, doc) => {
                     if (error) {
                         res.statusCode = 501;
                         res.send({ error: "Failed to Update database" })

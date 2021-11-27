@@ -53,7 +53,7 @@ export default class signup extends React.Component {
             alert("Enter All Details ");
         }
         else {
-            if (/^([\w\d](\.)*)+\@([\w\.]{1,2})+(\w)$/.test(this.state.email) && (this.state.firstname.length >= 3) && (this.state.lastname.length >= 3) && (this.state.university.length >= 3) && (this.state.designation.length >= 2)) {
+            if (/^([\w\d](\.)*)+\@([\w\.]{1,2})+(\w)$/.test(this.state.email) && (this.state.firstname.length >= 1) && (this.state.lastname.length >= 1) && (this.state.university.length >= 1) && (this.state.designation.length >= 1)) {
                 const details = {
                     firstname: this.state.firstname,
                     lastname: this.state.lastname,
@@ -190,49 +190,7 @@ export default class signup extends React.Component {
                 </Container>
             </div>
 
-            // <div style={{ flex: 1, marginLeft: '1vh' }}>
-            //     <Form onSubmit={this.sendValues}>
-            //         <Row form>
-            //             <Col md={2} xs={2}>
-            //                 <FormGroup>
-            //                     <Label>First Name</Label>
-            //                     <Input type="text" name="firstname" onChange={this.handleInputChange} />
-            //                 </FormGroup>
-            //             </Col>
-            //             <Col md={2} xs={2}>
-            //                 <FormGroup>
-            //                     <Label>Last Name</Label>
-            //                     <Input type="text" name="lastname" onChange={this.handleInputChange} />
-            //                 </FormGroup>
-            //             </Col>
-            //         </Row>
-            //         <Row>
-            //             <Col md={3}>
-            //                 <FormGroup>
-            //                     <Label>Email</Label>
-            //                     <Input type="email" name="email" onChange={this.handleInputChange} />
-            //                 </FormGroup>
-            //             </Col>
-            //         </Row>
-            //         <Row>
-            //             <Col md={2}>
-            //                 <FormGroup>
-            //                     <Label>University Name</Label>
-            //                     <Input type="text" name="university" onChange={this.handleInputChange} />
-            //                 </FormGroup>
-            //             </Col>
-            //             <Col md={2}>
-            //                 <FormGroup>
-            //                     <Label>Employee Designation</Label>
-            //                     <Input type="text" name="designation" onChange={this.handleInputChange} />
-            //                 </FormGroup>
-            //             </Col>
-            //         </Row>
-
-          
-            //         <Button type="submit" color="primary">Submit</Button>
-            //     </Form>
-            // </div>
+           
         )
     }
 }
