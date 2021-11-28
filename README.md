@@ -82,10 +82,10 @@
   3. Run `npm install` and after that `npm install yarn` in the terminal to install all related dependencies.
   4. Create a ".env" file in the backend directory.
   5. Insert following things in .env file-
-  `MONGODB_URL=mongodb+srv://<username>:<password>@cluster0-wi7dd.mongodb.net/test?retryWrites=true&w=majority`
-  `password=your_email_password`
-  `port=your_port_no.`
-  `email=your_email`
+  `MONGODB_URL=mongodb+srv://<username>:<password>@cluster0-wi7dd.mongodb.net/test?retryWrites=true&w=majority`<br/>
+  `password=your_email_password`<br/>
+  `port=your_port_no.`<br/>
+  `email=your_email`<br/>
   Here,replace username and password of MONGODB_URL by the one you have given for the project you have created in the MongoDB Cloud.
   Replace your_email_password with your email password, replace your_port_no with your port no of localhost and replace your_email with your email.
   6. Type `cd ..` in terminal.
@@ -107,7 +107,7 @@ After following 16 steps of instructions, go to MongoDB Cloud and login to your 
  a. Go to your project which you created for this repo.
  b. Go to Database and click Browse Collections under Database Deployments.
  c. Now in users table in test database,add
-`email:"edgile@gmail.com"`
-`role:"super"`
-`passwd:"admin123"`     
+`email:"edgile@gmail.com"`<br/>
+`role:"super"`<br/>
+`passwd:"admin123"`<br/>     
 3. Route for admin `http://localhost:3000/admin`
