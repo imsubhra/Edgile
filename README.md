@@ -52,10 +52,10 @@
  12. DISPLAY OTHER DEPARTMENT HEADS PAGE FOR DEPARTMENT ADMINS
  ![Screenshot (608)](https://user-images.githubusercontent.com/51112668/143488678-70ad57f0-ef44-429e-a0c4-2750af9fee26.png)
  11. DASHBOARD FOR TEACHER
- ![Screenshot (610)](https://user-images.githubusercontent.com/51112668/143489673-240d004e-8f6f-45a0-86ee-b98da66de9fe.png)
+ ![Screenshot (626)](https://user-images.githubusercontent.com/51112668/143769128-777c0465-5ec6-45fb-b6e9-33e64186cd24.png)
  12. CREATE EXAM PAGE FOR TEACHER
- ![Screenshot (611)](https://user-images.githubusercontent.com/51112668/143489638-045192dc-b4b7-4135-9a27-ddce48ef94c5.png)
- ![Screenshot (612)](https://user-images.githubusercontent.com/51112668/143489642-0c290c43-760d-4404-af41-d497c716ba16.png)
+ ![Screenshot (627)](https://user-images.githubusercontent.com/51112668/143769119-16714d4f-6c08-4e32-b8dd-2daa00f93728.png)
+ ![Screenshot (628)](https://user-images.githubusercontent.com/51112668/143769135-e29ac4dd-ff53-47e7-b0ec-24f930f93a18.png)
  13. DASHBOARD FOR STUDENT
  ![Screenshot (613)](https://user-images.githubusercontent.com/51112668/143489942-0d7b15e4-2efc-429f-8f79-9d97036e6033.png)
  14. VIEW EXAM PAGE FOR STUDENT
