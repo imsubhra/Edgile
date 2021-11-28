@@ -110,4 +110,4 @@ After following 16 steps of instructions, go to MongoDB Cloud and login to your 
 `email:"edgile@gmail.com"`
 `role:"super"`
 `passwd:"admin123"`     
-
+3. Route for admin `http://localhost:3000/admin`
