@@ -93,7 +93,7 @@
   8. Run `npm install` and after that `npm install yarn` in the terminal to install all related dependencies.
   9. Run `yarn build` in the terminal
   10. Type `cd ..` in terminal.
-  11. Type `cd frontend\desktop` in terminal.
+  11. Type `cd desktop` in terminal.
   12. Run `npm install` and after that `npm install yarn` in the terminal to install all related dependencies.
   13. Run `yarn build` in the terminal
   14. Type `cd ..` in terminal.
